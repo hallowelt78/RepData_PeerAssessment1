@@ -111,6 +111,15 @@ data_new <- data_imputed %>%
             select (steps = steps2, date, interval)
 ```
  
+```{r, fig.align='center'}
+data_new %>% 
+ select (date,steps) %>%
+  group_by(date) %>% 
+  summarise_all(sum) %>% 
+  select(steps) %>% 
+  unlist() %>% hist( main="Histogram of Total Steps per Day with imputed data",
+                     xlab="Steps per Day")
+```
 
 
 

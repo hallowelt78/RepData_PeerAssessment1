@@ -155,6 +155,18 @@ data_new <- data_imputed %>%
 ```
  
 
+```r
+data_new %>% 
+ select (date,steps) %>%
+  group_by(date) %>% 
+  summarise_all(sum) %>% 
+  select(steps) %>% 
+  unlist() %>% hist( main="Histogram of Total Steps per Day with imputed data",
+                     xlab="Steps per Day")
+```
+
+<img src="PA1_template_files/figure-html/unnamed-chunk-10-1.png" style="display: block; margin: auto;" />
+
 
 
 ## Are there differences in activity patterns between weekdays and weekends?
@@ -178,6 +190,6 @@ data_new %>%
   facet_grid(daytype~ .)
 ```
 
-![](PA1_template_files/figure-html/unnamed-chunk-10-1.png)<!-- -->
+![](PA1_template_files/figure-html/unnamed-chunk-11-1.png)<!-- -->
 
 
